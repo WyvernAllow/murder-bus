@@ -7,6 +7,7 @@ add_subdirectory(deps/SDL)
 
 add_executable(${PROJECT_NAME}
     src/main.c
+    src/vec2.c
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

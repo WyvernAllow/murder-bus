@@ -3,52 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "vec2.h"
+
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 450;
 const float HALF_WIDTH = SCREEN_WIDTH / 2.0f;
 const float HALF_HEIGHT = SCREEN_HEIGHT / 2.0f;
-
-typedef struct vec2 {
-    float x;
-    float y;
-} vec2;
-
-vec2 vec2_add(vec2 a, vec2 b) {
-    vec2 result;
-    result.x = a.x + b.x;
-    result.y = a.y + b.y;
-    return result;
-}
-
-vec2 vec2_sub(vec2 a, vec2 b) {
-    vec2 result;
-    result.x = a.x - b.x;
-    result.y = a.y - b.y;
-    return result;
-}
-
-vec2 vec2_scale(vec2 v, float s) {
-    vec2 result;
-    result.x = v.x * s;
-    result.y = v.y * s;
-    return result;
-}
-
-vec2 vec2_rotate(vec2 v, float angle_rad) {
-    vec2 result;
-    float cos_theta = cos(angle_rad);
-    float sin_theta = sin(angle_rad);
-    result.x = v.x * cos_theta - v.y * sin_theta;
-    result.y = v.x * sin_theta + v.y * cos_theta;
-    return result;
-}
-
-vec2 vec2_perp(vec2 v) {
-    vec2 result;
-    result.x = -v.y;
-    result.y = v.x;
-    return result;
-}
 
 float lerp(float v0, float v1, float t) {
     return (1 - t) * v0 + t * v1;
@@ -121,9 +81,9 @@ int main(void) {
     float current_time = SDL_GetTicks() / 1000.0f;
     float last_time = current_time;
 
-    uint8_t fog_r = 100;
-    uint8_t fog_g = 100;
-    uint8_t fog_b = 100;
+    uint8_t fog_r = 200;
+    uint8_t fog_g = 200;
+    uint8_t fog_b = 200;
 
     float wheel_angle_min = 40.0f;
     float wheel_angle_max = -40.0f;
